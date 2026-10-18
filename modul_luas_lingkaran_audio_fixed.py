@@ -634,12 +634,16 @@ AUDIO_LIB = r"""
    benar.volume=S.vol; salah.volume=S.vol;
    benar.muted=!S.sfx; salah.muted=!S.sfx;
  }
- // Token mencegah audio salah mulai lagi jika perintah stop datang saat play() masih diproses.
- function stopFeedback(){
+ // Token membatalkan pemutaran yang masih tertunda ketika pengguna menekan tombol apa pun.
+ function stopAnswerSounds(){
    feedbackGeneration++;
-   salah.pause();
-   try{salah.currentTime=0;}catch(e){}
+   [benar,salah].forEach(function(a){
+     try{a.pause();}catch(e){}
+     try{a.currentTime=0;}catch(e){}
+   });
  }
+ // Nama lama dipertahankan agar perintah stop yang sudah ada tetap kompatibel.
+ function stopFeedback(){stopAnswerSounds();}
  function tone(f,t,d,type,g,dest){var o=A.createOscillator(),e=A.createGain();o.type=type;o.frequency.setValueAtTime(f,t);
   e.gain.setValueAtTime(0.0001,t);e.gain.exponentialRampToValueAtTime(g,t+0.02);e.gain.exponentialRampToValueAtTime(0.0001,t+d);
   o.connect(e);e.connect(dest||master);o.start(t);o.stop(t+d+0.05);}
@@ -657,25 +661,30 @@ AUDIO_LIB = r"""
   if(n==='stop_feedback'){stopFeedback();return;}
   if(n!=='bad_start'){stopFeedback();}
   if(n==='bad_start'){
-    syncAudio(); salah.loop=true; try{salah.currentTime=0;}catch(e){}
-    var token=feedbackGeneration;
-    salah.play().then(function(){
-      if(token!==feedbackGeneration){salah.pause();try{salah.currentTime=0;}catch(e){}}
-    }).catch(function(){});
-    return;
-  }
-  if(n==='ok'){
-    stopFeedback(); syncAudio(); try{benar.currentTime=0;}catch(e){}
-    benar.play().catch(function(){}); return;
-  }
-  if(!S.sfx){return;}
+   stopAnswerSounds();
+   syncAudio(); salah.loop=true; try{salah.currentTime=0;}catch(e){}
+   var token=feedbackGeneration;
+   salah.play().then(function(){
+     if(token!==feedbackGeneration){salah.pause();try{salah.currentTime=0;}catch(e){}}
+   }).catch(function(){});
+   return;
+ }
+ if(n==='ok'){
+   stopAnswerSounds(); syncAudio(); try{benar.currentTime=0;}catch(e){}
+   var token=feedbackGeneration;
+   benar.play().then(function(){
+     if(token!==feedbackGeneration){benar.pause();try{benar.currentTime=0;}catch(e){}}
+   }).catch(function(){});
+   return;
+ }
+ if(!S.sfx){return;}
   var go=function(){var t=A.currentTime+0.02;
    if(n==='nav'){tone(660,t,0.12,'sine',0.5);tone(880,t+0.07,0.14,'sine',0.5);}
    else if(n==='win'){[523.25,659.25,783.99,659.25,783.99,1046.5,1318.5].forEach(function(f,k){tone(f,t+k*0.12,0.3,'triangle',0.6);});}
   };
   if(A.state==='running'){go();}else{A.resume().then(go).catch(function(){});}
  }
- window.__lk={stopFeedback:stopFeedback,update:function(c){
+ window.__lk={version:'v4',stopFeedback:stopFeedback,stopAnswerSounds:stopAnswerSounds,update:function(c){
    S.sfx=!!c.sfx; S.music=!!c.music; S.vol=Math.max(0,Math.min(1,c.vol));
    master.gain.value=1; mus.gain.value=0.35; syncAudio();
    if(S.music){unlock();}else{stopMusic();}
@@ -683,15 +692,12 @@ AUDIO_LIB = r"""
  }};
 })();
 """
-AUDIO_BOOT = ("(function(){try{var P=window.parent;if(!P.__lk){var s=P.document.createElement('script');"
-              "s.id='lk-audio';s.textContent=LIB;P.document.head.appendChild(s);}"
+AUDIO_BOOT = ("(function(){try{var P=window.parent;if(!P.__lk||!P.__lk.stopAnswerSounds){if(P.__lk&&P.__lk.stopFeedback)P.__lk.stopFeedback();var s=P.document.createElement('script');"
+              "s.id='lk-audio-v4';s.textContent=LIB;P.document.head.appendChild(s);}"
               "P.__lk.update(CFG);"
-              "if(!P.__lkStopClickBound){P.__lkStopClickBound=true;P.document.addEventListener('click',function(ev){"
+              "if(!P.__lkStopAnyButtonBoundV4){P.__lkStopAnyButtonBoundV4=true;P.document.addEventListener('click',function(ev){"
               "var el=ev.target;while(el&&el!==P.document){if(el.tagName==='BUTTON'){"
-              "var t=(el.innerText||el.textContent||'').replace(/\\s+/g,' ').trim();"
-              "if(t.indexOf('Lanjut ke Soal Berikutnya')!==-1||t.indexOf('Soal Sebelumnya')!==-1||"
-              "t.indexOf('Coba Lagi')!==-1||t.indexOf('Perbaiki Jawaban')!==-1){"
-              "if(P.__lk&&P.__lk.stopFeedback)P.__lk.stopFeedback();}break;}el=el.parentNode;}"
+              "if(P.__lk&&P.__lk.stopAnswerSounds)P.__lk.stopAnswerSounds();break;}el=el.parentNode;}"
               "},true);}}catch(e){}})();")
 
 
