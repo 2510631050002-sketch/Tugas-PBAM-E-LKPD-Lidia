@@ -675,7 +675,7 @@ AUDIO_LIB = r"""
   };
   if(A.state==='running'){go();}else{A.resume().then(go).catch(function(){});}
  }
- window.__lk={update:function(c){
+ window.__lk={stopFeedback:stopFeedback,update:function(c){
    S.sfx=!!c.sfx; S.music=!!c.music; S.vol=Math.max(0,Math.min(1,c.vol));
    master.gain.value=1; mus.gain.value=0.35; syncAudio();
    if(S.music){unlock();}else{stopMusic();}
@@ -684,7 +684,15 @@ AUDIO_LIB = r"""
 })();
 """
 AUDIO_BOOT = ("(function(){try{var P=window.parent;if(!P.__lk){var s=P.document.createElement('script');"
-              "s.id='lk-audio';s.textContent=LIB;P.document.head.appendChild(s);}P.__lk.update(CFG);}catch(e){}})();")
+              "s.id='lk-audio';s.textContent=LIB;P.document.head.appendChild(s);}"
+              "P.__lk.update(CFG);"
+              "if(!P.__lkStopClickBound){P.__lkStopClickBound=true;P.document.addEventListener('click',function(ev){"
+              "var el=ev.target;while(el&&el!==P.document){if(el.tagName==='BUTTON'){"
+              "var t=(el.innerText||el.textContent||'').replace(/\\s+/g,' ').trim();"
+              "if(t.indexOf('Lanjut ke Soal Berikutnya')!==-1||t.indexOf('Soal Sebelumnya')!==-1||"
+              "t.indexOf('Coba Lagi')!==-1||t.indexOf('Perbaiki Jawaban')!==-1){"
+              "if(P.__lk&&P.__lk.stopFeedback)P.__lk.stopFeedback();}break;}el=el.parentNode;}"
+              "},true);}}catch(e){}})();")
 
 
 # ---------- SESSION STATE ----------
