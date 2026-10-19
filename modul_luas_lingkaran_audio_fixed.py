@@ -910,8 +910,6 @@ def video_block(url, label="video pembelajaran"):
             st.video(url)
         except Exception:
             st.link_button(f"▶️ Buka {label}", url)
-    else:
-        st.info(f"📌 Tempat {label}. Tautan belum diisi guru (isi pada bagian KONFIGURASI di app.py).")
 
 
 def overall_progress():
