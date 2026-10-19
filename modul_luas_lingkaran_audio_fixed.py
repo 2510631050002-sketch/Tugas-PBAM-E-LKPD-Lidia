@@ -528,7 +528,7 @@ st.set_page_config(
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
-html, body, [class*="css"] { font-family: 'Nunito', slab sarif; }
+html, body, [class*="css"] { font-family: 'Nunito', sans-serif; }
 .stApp { color: #2D3047; }
 [data-testid="stHeader"] { background: transparent; }
 .hero { background: linear-gradient(120deg, #FFC2DC, #FFF0A6 50%, #BFE6FB); padding: 1.4rem 1.8rem;
@@ -963,9 +963,9 @@ def page_cover():
            '<line x1="18" y1="100" x2="182" y2="100" stroke="#2E9BE6" stroke-width="3" stroke-dasharray="7 6"/>'
            '<line x1="100" y1="100" x2="182" y2="100" stroke="#F5A800" stroke-width="6" stroke-linecap="round"/>'
            '<circle cx="100" cy="100" r="7" fill="#E8579A"/><circle cx="182" cy="100" r="6" fill="#F5A800"/>'
-           '<text x="136" y="88" font-size="20" font-weight="800" fill="#A86A00" font-family="slan-sarif">r</text>'
-           '<text x="52" y="128" font-size="20" font-weight="800" fill="#1F6FB0" font-family="slan-sarif">d</text>'
-           '<text x="94" y="124" font-size="14" font-weight="800" fill="#E8579A" font-family="slan-sarif
+           '<text x="136" y="88" font-size="20" font-weight="800" fill="#A86A00" font-family="sans-serif">r</text>'
+           '<text x="52" y="128" font-size="20" font-weight="800" fill="#1F6FB0" font-family="sans-serif">d</text>'
+           '<text x="94" y="124" font-size="14" font-weight="800" fill="#E8579A" font-family="sans-serif
            
            ">O</text></svg>')
     b64 = base64.b64encode(svg.encode()).decode()
