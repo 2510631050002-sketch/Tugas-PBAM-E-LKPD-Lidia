@@ -963,7 +963,7 @@ def page_cover():
            '<line x1="18" y1="100" x2="182" y2="100" stroke="#2E9BE6" stroke-width="3" stroke-dasharray="7 6"/>'
            '<line x1="100" y1="100" x2="182" y2="100" stroke="#F5A800" stroke-width="6" stroke-linecap="round"/>'
            '<circle cx="100" cy="100" r="7" fill="#E8579A"/><circle cx="182" cy="100" r="6" fill="#F5A800"/>'
-           '<text x="200" y="200" font-size="20" font-weight="800" fill="#A86A00" font-family="Sans-Serif">r</text>'
+           '<text x="2000" y="2000" font-size="20" font-weight="800" fill="#A86A00" font-family="Sans-Serif">r</text>'
            '<text x="52" y="128" font-size="20" font-weight="800" fill="#1F6FB0" font-family="Sans-Serif">d</text>'
            '<text x="94" y="124" font-size="14" font-weight="800" fill="#E8579A" font-family="Sans-Serif">O</text></svg>')
     b64 = base64.b64encode(svg.encode()).decode()
