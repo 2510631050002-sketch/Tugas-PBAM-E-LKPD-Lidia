@@ -37,7 +37,7 @@ GURU_PIN = "guru123"                                 # TODO GURU: ganti PIN pane
 # Tautan video. Kosongkan ("") jika belum ada; aplikasi akan menampilkan placeholder.
 # Contoh format: "https://www.youtube.com/watch?v=XXXXXXXXXXX"
 VIDEO_UTAMA = ""                                     # TODO GURU: video materi inti
-VIDEO_PENCARIAN = "https://www.youtube.com/results?search_query=luas+lingkaran+kelas+6+SD"
+VIDEO_PENCARIAN = "https://youtu.be/RQAUzANdxoM?si=XAoFDQqMF6Da9PO2"
 
 # TODO GURU: ganti dengan rumusan CP/tujuan resmi dari LKPD / kurikulum sekolah.
 CAPAIAN_PEMBELAJARAN = [
