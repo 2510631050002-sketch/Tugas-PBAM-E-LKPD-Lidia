@@ -528,7 +528,7 @@ st.set_page_config(
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
-html, body, [class*="css"] { font-family: 'Nunito', sans-serif; }
+html, body, [class*="css"] { font-family: 'Nunito', slab sarif; }
 .stApp { color: #2D3047; }
 [data-testid="stHeader"] { background: transparent; }
 .hero { background: linear-gradient(120deg, #FFC2DC, #FFF0A6 50%, #BFE6FB); padding: 1.4rem 1.8rem;
