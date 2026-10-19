@@ -36,7 +36,7 @@ GURU_PIN = "guru123"                                 # TODO GURU: ganti PIN pane
 
 # Tautan video. Kosongkan ("") jika belum ada; aplikasi akan menampilkan placeholder.
 # Contoh format: "https://www.youtube.com/watch?v=XXXXXXXXXXX"
-VIDEO_UTAMA = ""                                     # TODO GURU: video materi inti
+VIDEO_UTAMA = "https://youtu.be/RQAUzANdxoM?si=XAoFDQqMF6Da9PO2"                                     # TODO GURU: video materi inti
 VIDEO_PENCARIAN = "https://youtu.be/RQAUzANdxoM?si=XAoFDQqMF6Da9PO2"
 
 # TODO GURU: ganti dengan rumusan CP/tujuan resmi dari LKPD / kurikulum sekolah.
@@ -1171,7 +1171,7 @@ def page_materi():
     else:
         st.write("Tonton video pembelajaran berikut untuk memperkuat pemahamanmu.")
         video_block(VIDEO_UTAMA, "video pembelajaran")
-        st.link_button("🔎 Cari video luas lingkaran di YouTube", VIDEO_PENCARIAN)
+        st.link_button("🔎 Sumber video yt.@CHITRASINTARANI,2021", VIDEO_PENCARIAN)
         st.caption("Tombol pencarian membuka hasil pencarian YouTube, bukan video pilihan guru.")
         all_seen = len(st.session_state.materi_seen) == n
         if not all_seen:
