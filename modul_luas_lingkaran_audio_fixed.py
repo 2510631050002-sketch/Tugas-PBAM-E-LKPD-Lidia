@@ -942,14 +942,7 @@ def render_recommendations(items, prefix):
             st.markdown(f"**📌 {t['label']}**")
             st.write(reason)
             st.caption(t["tip"])
-            c1, c2 = st.columns(2)
-            if c1.button("📖 Pelajari bagian materinya", key=f"{prefix}_mat_{topic}", use_container_width=True):
-                go_materi(t["step"])
-            with c2:
-                if t["video"] and t["video"].startswith("https://"):
-                    st.link_button("▶️ Tonton video penjelasan", t["video"], use_container_width=True)
-                else:
-                    st.caption("🎬 Tautan video topik ini belum diisi guru.")
+          
     if not shown:
         st.success("🌟 Tidak ada materi yang perlu diulang saat ini. Pertahankan!")
 
