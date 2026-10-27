@@ -1044,8 +1044,7 @@ def page_capaian():
     st.markdown("### Setelah menyelesaikan modul ini, kamu diharapkan mampu:")
     for g in CAPAIAN_PEMBELAJARAN:
         st.markdown(f"- {g}")
-    st.info("Catatan guru: rumusan di atas adalah tujuan pembelajaran modul ini, bukan kutipan dokumen resmi. "
-            "Samakan dengan CP/ATP/LKPD sekolah melalui daftar CAPAIAN_PEMBELAJARAN di app.py.")
+  
     if st.button("✅ Saya sudah membaca tujuan", type="primary", key="done_cp"):
         mark_complete("Capaian Pembelajaran")
     if "Capaian Pembelajaran" in st.session_state.completed:
