@@ -69,32 +69,32 @@ MATERI_STEPS = [
 TOPICS = {
     "unsur": {
         "label": "Titik pusat, jari-jari, dan diameter",
-        "step": 0, "video": "",               # TODO GURU: tautan video topik ini
+        "step": 0, "video": "https://youtu.be/wuqmOxS15t0?si=FVmhjTtp8te4P-I0",               # TODO GURU: tautan video topik ini
         "tip": "Ulangi bagian unsur-unsur lingkaran: titik pusat, jari-jari, dan diameter.",
     },
     "hubungan": {
         "label": "Hubungan jari-jari dan diameter",
-        "step": 1, "video": "",               # TODO GURU
+        "step": 1, "video": "https://youtu.be/gNgnTZutYdU?si=p2nPoGZ0W2xVviBL",               # TODO GURU
         "tip": "Ingat: d = 2 × r dan r = d ÷ 2. Cari jari-jari lebih dulu sebelum memakai rumus luas.",
     },
     "rumus": {
         "label": "Rumus luas lingkaran",
-        "step": 2, "video": "",               # TODO GURU
+        "step": 2, "video": "https://youtube.com/shorts/UZUX-D0W75w?si=3_gErVx7Nl-5iX42",               # TODO GURU
         "tip": "Luas lingkaran: L = π × r × r. Jangan tertukar dengan rumus keliling (2 × π × r).",
     },
     "pi": {
         "label": "Memilih nilai π",
-        "step": 3, "video": "",               # TODO GURU
+        "step": 3, "video": "https://youtu.be/z9ub1VPzMDw?si=xQbGluJ1HjOH6FC5",               # TODO GURU
         "tip": "Pakai π = 22/7 jika r atau d kelipatan 7; pakai π = 3,14 untuk ukuran lainnya.",
     },
     "hitung": {
         "label": "Contoh perhitungan luas lingkaran",
-        "step": 4, "video": "",               # TODO GURU
+        "step": 4, "video": "https://youtube.com/shorts/mJ6QKdbPGCs?si=WjqiosMzO3V1sgxP",               # TODO GURU
         "tip": "Pelajari contoh penyelesaian langkah demi langkah, lalu perhatikan perkaliannya.",
     },
     "cerita": {
         "label": "Luas lingkaran dalam soal cerita",
-        "step": 4, "video": "",               # TODO GURU
+        "step": 4, "video": "https://youtu.be/opE8wBihvcs?si=1kA2BuDuUXS0fPp2",               # TODO GURU
         "tip": "Tulis diketahui dan ditanya, ubah diameter ke jari-jari bila perlu, lalu hitung luasnya.",
     },
 }
